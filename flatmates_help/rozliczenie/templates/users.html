@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if users_n_sums %}
+    <table>
+        <tr>
+            <th>Użytkownik</th>
+            <th>Łączne koszty</th>
+        </tr>
+        {% for user, sum in users_n_sums %}
+        <tr>
+            <td><a href="/user/{{user.username}}">{{user.username}}</a></td>
+            <td>{{sum}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+<h2>Nie znaleziono żadnych wyników</h2>
+{% endif %}
+{% endblock %}

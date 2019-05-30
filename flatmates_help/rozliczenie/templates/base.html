@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <title>Rozliczenie</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th><a href="{% url 'users' %}">Podsumowanie</a></th>
+        <th><a href="{% url 'expenses' %}">Wszystkie wydatki</a></th>
+        {% if user.is_authenticated %}
+        <th><a href="{% url 'post_expense'%}">Dodaj produkt</a></th>
+        <th><a href="{% url 'logout' %}">Wyloguj</a>(<a href="{% url 'user_detail' user.username %}">{{user.username}}</a>)</th>
+        {% else %}
+        <th><a href="{% url 'login' %}">Logowanie</a></th>
+        {% endif %}
+    </tr>
+</table>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

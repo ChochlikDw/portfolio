@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>{{expense.description}}</h1>
+<table>
+    <tr>
+        <th>Data</th>
+        <td>{{expense.pub_date}}</td>
+    </tr>
+    <tr>
+        <th>Użytkownik</th>
+        <td><a href="/user/{{expense.user_id}}">{{expense.user_id}}</a></td>
+    </tr>
+    <tr>
+        <th>Cena</th>
+        <td>{{expense.price}}</td>
+    </tr>
+</table>
+{% endblock %}

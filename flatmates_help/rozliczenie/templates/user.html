@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>{{user_.username}}</h1>
+{% if expense_list %}
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Koszt</th>
+            <th>Opis</th>
+        </tr>
+        {% for expense in expense_list %}
+        <tr>
+            <td>{{expense.pub_date}}</td>
+            <td>{{expense.price}}</td>
+            <td><a href="{% url 'expense_detail' expense.id %}">{{expense.description}}</a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td><b>Suma:</b></td>
+            <td>{{total}}</td>
+            <td></td>
+        </tr>
+    </table>
+{% else %}
+<h2>Nie znaleziono wydatków dla danego użytkownika</h2>
+{% endif %}
+{% endblock %}
